@@ -30,16 +30,14 @@ const mutationResolvers = {
     const removed = users.splice(i, 1)
     return removed ? removed[0] : null
   },
-  updateUser(_, { id, name, email, age }) {
-    const i = users.findIndex((u) => u.id === id)
+  updateUser(_, { filter, data }) {
+    const i = filterUser(users, filter)
 
     if (i < 0) return null
 
     const updated = {
       ...users[i],
-      name,
-      email,
-      age,
+      ...data,
     }
     users.splice(i, 1, updated)
     return updated

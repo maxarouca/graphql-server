@@ -1,6 +1,6 @@
 let id = 1
 
-function nextId() {
+export function nextId() {
   return id++
 }
 

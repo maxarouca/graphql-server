@@ -1,6 +1,12 @@
+let id = 1
+
+function nextId() {
+  return id++
+}
+
 export const users = [
   {
-    id: 1,
+    id: nextId(),
     name: 'Joao Silva',
     email: 'jsilva@gemail.com',
     age: 29,
@@ -8,7 +14,7 @@ export const users = [
     status: 'INACTIVE',
   },
   {
-    id: 2,
+    id: nextId(),
     name: 'Jane Doe',
     email: 'janedoe@gemail.com',
     age: 26,
@@ -16,7 +22,7 @@ export const users = [
     status: 'BLOQUED',
   },
   {
-    id: 3,
+    id: nextId(),
     name: 'Max Arouca',
     email: 'maximiler@gmail.com',
     age: 31,

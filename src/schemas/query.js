@@ -4,7 +4,7 @@ const Query = gql`
   type Query {
     loggedUser: User
     users: [User]
-    user(id: Int): User
+    user(filter: FilterUser!): User
     profiles: [Profile]
     profile(id: Int): Profile
   }

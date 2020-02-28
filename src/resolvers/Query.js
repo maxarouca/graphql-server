@@ -1,4 +1,5 @@
 import { users, profiles } from '../database'
+import filterUser from '../utils/filterUsers'
 
 const Query = {
   loggedUser() {
@@ -14,17 +15,21 @@ const Query = {
   users() {
     return users
   },
-  user(_, { id }) {
-    const selected = users.filter((u) => u.id === id)
-    return selected ? selected[0] : null
+  user(_, { filter }) {
+    const i = filterUser(users, filter)
+    console.log(i)
+
+    const selected = i > -1 ? users[i] : null
+    // users.filter((u) => u.id === id)
+    return selected
   },
   profiles() {
     return profiles
   },
-  profile(_, { id }) {
-    const selected = profiles.filter((p) => p.id === id)
-    return selected ? selected[0] : null
-  },
+  // profile(_, { filter }) {
+  //   const selected = profiles.filter((p) => p.id === id)
+  //   return selected ? selected[0] : null
+  // },
 }
 
 export default Query

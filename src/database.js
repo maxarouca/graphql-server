@@ -19,7 +19,7 @@ export const users = [
     email: 'janedoe@gemail.com',
     age: 26,
     profile_id: 1,
-    status: 'BLOQUED',
+    status: 'BLOCKED',
   },
   {
     id: nextId(),

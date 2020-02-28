@@ -15,12 +15,23 @@ const User = gql`
   enum UserStatus {
     ACTIVE
     INACTIVE
-    BLOQUED
+    BLOCKED
   }
 
   type Profile {
     id: Int
     type: String!
+  }
+
+  input UserInput {
+    name: String
+    email: String
+    age: Int
+  }
+
+  input FilterUser {
+    id: Int
+    email: String
   }
 `
 

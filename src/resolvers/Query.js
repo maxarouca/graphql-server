@@ -1,12 +1,6 @@
 import { users, profiles } from '../database'
 
 const Query = {
-  ola() {
-    return 'Retornar uma string'
-  },
-  horaAtual() {
-    return new Date().toLocaleTimeString('pt-BR')
-  },
   loggedUser() {
     return {
       id: 123,
@@ -15,13 +9,6 @@ const Query = {
       age: 31,
       salary_real: 3500.55,
       vip: true,
-    }
-  },
-  product() {
-    return {
-      name: 'Tenis',
-      price: 199.99,
-      discount: 0.3,
     }
   },
   users() {

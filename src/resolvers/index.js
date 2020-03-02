@@ -1,11 +1,4 @@
-import User from './User'
-import Query from './Query'
-import Mutation from './Mutation'
+import postResolver from './postResolvers'
+import userResolver from './userResolvers'
 
-const resolvers = {
-  User,
-  Query,
-  Mutation,
-}
-
-export default resolvers
+export default [userResolver, postResolver]

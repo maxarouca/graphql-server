@@ -1,13 +1,14 @@
 import { gql } from 'apollo-server'
+import userSchema from './userSchema'
+import postSchema from './postSchema'
 
-import Query from './query'
-import User from './user'
-import Mutation from './mutation'
-
-const Date = gql`
-  scalar Date
+const linkSchema = gql`
+  type Query {
+    _: Boolean
+  }
+  type Mutation {
+    _: Boolean
+  }
 `
 
-const schema = [Date, Query, User, Mutation]
-
-export default schema
+export default [linkSchema, userSchema, postSchema]

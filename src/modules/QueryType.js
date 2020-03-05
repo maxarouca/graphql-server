@@ -3,15 +3,24 @@ import {
   GraphQLString,
   GraphQLID,
   GraphQLNonNull,
-  GraphQLList,
 } from 'graphql'
 
-import { nodeInterface, nodeField } from '../node/nodeInterface'
+import {
+  connectionDefinitions,
+  connectionFromPromisedArray,
+  connectionArgs,
+} from 'graphql-relay'
+
+import { nodeField } from '../node/nodeInterface'
 
 import { postType } from './posts/postSchema'
 import { getPostById, getPosts } from './posts/postResolvers'
 import { userType, tokenType } from './users/userSchema'
 import { getUserById, login } from './users/userResolvers'
+
+export const { connectionType: PostConnection } = connectionDefinitions({
+  nodeType: postType,
+})
 
 const QueryType = new GraphQLObjectType({
   name: 'QueryType',
@@ -53,8 +62,10 @@ const QueryType = new GraphQLObjectType({
       resolve: (_, args, context) => getPostById(args, context),
     },
     posts: {
-      type: GraphQLList(postType),
-      resolve: (_, args, context) => getPosts(args, context),
+      type: PostConnection,
+      args: connectionArgs,
+      resolve: (_, args, context) =>
+        connectionFromPromisedArray(getPosts(args, context)),
     },
   },
 })

@@ -4,7 +4,7 @@ import {
   GraphQLString,
   GraphQLNonNull,
 } from 'graphql'
-import { globalIdField } from 'graphql-relay'
+import { globalIdField, connectionDefinitions } from 'graphql-relay'
 
 import { nodeInterface } from '../../node/nodeInterface'
 import { userType } from '../users/userSchema'

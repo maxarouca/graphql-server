@@ -1,14 +1,11 @@
-import { gql } from 'apollo-server'
-import userSchema from './userSchema'
-import postSchema from './postSchema'
+import { GraphQLSchema } from 'graphql'
 
-const linkSchema = gql`
-  type Query {
-    _: Boolean
-  }
-  type Mutation {
-    _: Boolean
-  }
-`
+import QueryType from '../modules/QueryType'
+import MutationType from '../modules/MutationType'
 
-export default [linkSchema, userSchema, postSchema]
+const schema = new GraphQLSchema({
+  query: QueryType,
+  mutation: MutationType,
+})
+
+export default schema

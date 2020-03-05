@@ -5,8 +5,7 @@ import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import { ApolloServer, AuthenticationError } from 'apollo-server-express'
 
-import schemas from './schemas'
-import resolvers from './resolvers'
+import schema from './schemas'
 
 import userModel from './models/userModel'
 import postModel from './models/postModel'
@@ -27,8 +26,7 @@ const getUser = async (req) => {
 }
 
 const server = new ApolloServer({
-  typeDefs: schemas,
-  resolvers,
+  schema,
   context: async ({ req }) => {
     if (req) {
       const me = await getUser(req)

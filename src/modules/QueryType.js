@@ -65,7 +65,7 @@ const QueryType = new GraphQLObjectType({
       type: PostConnection,
       args: connectionArgs,
       resolve: (_, args, context) =>
-        connectionFromPromisedArray(getPosts(args, context)),
+        connectionFromPromisedArray(getPosts(args, context), args),
     },
   },
 })
